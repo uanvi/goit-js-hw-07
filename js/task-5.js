@@ -10,6 +10,6 @@ document.querySelector('.change-color').addEventListener('click', function (e) {
   const span = document.querySelector('.color');
   
   document.body.style.backgroundColor = newColor;
-  span.style.color = newColor;
+  span.textContent = newColor;
 
 });

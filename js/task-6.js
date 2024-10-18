@@ -5,26 +5,33 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-
 //Box logic
 const boxCountInput = document.querySelector('input[type="number"]');
 const boxes = document.getElementById('boxes');
 
 function createBoxes(amount) {
   destroyBoxes();
+
+  const fragment = document.createDocumentFragment();
   let size = 30;
 
   for (let i = 1; i <= amount; i++) {
-    const newDiv = document.createElement('div');
-    newDiv.style.width = `${size}px`;
-    newDiv.style.height = `${size}px`;
-    newDiv.style.margin = '5px';
-    newDiv.style.backgroundColor = getRandomHexColor();
-
-    boxes.appendChild(newDiv);
-
+    fragment.appendChild(createBox(size));
     size += 10;
   }
+
+  boxes.appendChild(fragment);
+}
+
+function createBox(size) { 
+  const divBox = document.createElement('div');
+  
+  divBox.style.width = `${size}px`;
+  divBox.style.height = `${size}px`;
+  divBox.style.margin = '5px';
+  divBox.style.backgroundColor = getRandomHexColor();
+  
+  return divBox;
 }
 
 function destroyBoxes() {
